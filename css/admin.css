@@ -1,0 +1,381 @@
+/*
+    Author: Mohammed Shohel
+    E-mail: codewithshohel@gmail.com
+    Theme: Food order website - Admin Panel
+    Version: 1.0
+*/
+
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f2f6;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box; /* Ensure padding and borders are included in total width and height */
+}
+
+/* Wrapper for content */
+.wrapper {
+    padding: 20px; /* Padding around content */
+    width: 80%; /* Width of the wrapper */
+    margin: 0 auto; /* Center aligning the wrapper */
+}
+
+/* Center align text */
+.text-center {
+    text-align: center; 
+}
+
+/* Clearfix for floats */
+.clearfix {
+    float: none;
+    clear: both;
+}
+/* CSS for menu */
+.menu {
+    border-bottom: 2px solid transparent; /* Bottom border for menu */
+    padding: 3px 0; /* Padding for menu */
+    background-color: #ffffff; /* Background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for menu */
+    position: sticky; /* Stick to the top of the page */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure it stays above other elements */
+    transition: all 0.3s ease-in-out; /* Smooth transition for background */
+}
+
+.menu ul {
+    list-style-type: none; /* Remove default list style */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center align menu items */
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 0 15px; /* Margin around menu items */
+} 
+
+.menu ul li a {
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Menu item color */
+    transition: color 0.3s, background-color 0.3s, transform 0.3s; /* Transition for text color, background color, and transform */
+    padding: 10px 20px; /* Padding for menu items */
+    border-radius: 5px; /* Rounded corners */
+    position: relative; /* Position for pseudo-elements */
+    display: inline-block; /* Set display to inline-block */
+}
+
+.menu ul li a::before {
+    content: ''; /* Empty content for decoration */
+    position: absolute; /* Absolute positioning */
+    width: 0; /* Initially no width */
+    height: 3px; /* Height of underline */
+    bottom: -5px; /* Position at bottom with slight overlap */
+    left: 50%; /* Start from center */
+    transform: translateX(-50%); /* Center align */
+    background-color: transparent; /* Underline color */
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Smooth transition for width and background color */
+}
+
+.menu ul li a:hover {
+    color: #fa0000; /* Hover color */
+    background-color: #f5f5f5; /* Background color on hover */
+    transform: translateY(-3px); /* Slightly move up on hover */
+}
+
+.menu ul li a:hover::before {
+    width: calc(100% - 10px); /* Full width on hover with slight padding */
+    background-color: #fa0000; /* Underline color on hover */
+}
+
+/* CSS for main-content */
+.main-content {
+    background-color: #f1f2f6; /* Background color */
+    padding: 3% 2%; /* Padding for content */
+    transition: padding 0.3s ease-in-out; /* Smooth transition for padding */
+}
+
+.col-4 {
+    width: 18%; /* Width of columns */
+    background-color: white; /* Background color */
+    margin: 1%; /* Margin between columns */
+    padding: 2% 0; /* Padding inside columns */
+    float: left; /* Floating columns */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box shadow */
+}
+
+.col-4:hover {
+    transform: translateY(-5px); /* Move up slightly on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.tbl-full, .tbl-30 {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders */
+    margin-bottom: 20px; /* Space below table */
+}
+
+.tbl-30 {
+    width: 30%; /* 30% width table */
+}
+
+table tr th, table tr td {
+    border-bottom: 1px solid #ddd; /* Bottom border for table header */
+    padding: 1%; /* Padding for table header */
+    text-align: left; /* Text alignment */
+    transition: background-color 0.3s ease-in-out; /* Smooth transition for background color */
+}
+
+table tr th {
+    background-color: #f9f9f9; /* Light background for header */
+}
+
+table tr:hover td {
+    background-color: #f5f5f5; /* Light background on row hover */
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-danger {
+    display: inline-block; /* Inline block for padding and margins */
+    padding: 10px 20px; /* Padding for buttons */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Smooth transition for background color, text color, and transform */
+}
+
+.btn-primary {
+    background-color: #0343f3; /* Button background color */
+}
+
+.btn-primary:hover {
+    background-color: #11b4ff; /* Hover background color */
+    color: black; /* Hover text color */
+    transform: translateY(-2px); /* Slightly move up on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+.btn-secondary {
+    background-color: #389324; /* Button background color */
+}
+
+.btn-secondary:hover {
+    background-color: #ccf358; /* Hover background color */
+    color: black; /* Hover text color */
+    transform: translateY(-2px); /* Slightly move up on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+.btn-danger {
+    background-color: #ff2424; /* Button background color */
+}
+
+.btn-danger:hover {
+    background-color: #ff0000; /* Hover background color */
+    color: black; /* Hover text color */
+    transform: translateY(-2px); /* Slightly move up on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+
+/*CSS for Message*/
+/* Define variables for messages */
+:root {
+    --success-text-color: #00ab66; /* Green text color for success */
+    --success-bg-color: #f0fff4; /* Light green background color for success */
+    --success-border-color: #8beac2; /* Border color for success */
+
+    --error-text-color: #ff3d71; /* Red text color for error */
+    --error-bg-color: #ffe6e6; /* Light red background color for error */
+    --error-border-color: #ffb3b3; /* Border color for error */
+
+    --info-text-color: #31708f; /* Text color for info message */
+    --info-bg-color: #d9edf7; /* Background color for info message */
+    --info-border-color: #bce8f1; /* Border color for info message */
+
+    --font-family: 'Roboto', Arial, sans-serif; /* Modern font stack */
+    --font-size: 16px; /* Base font size */
+    --border-radius: 10px; /* Increased border radius for rounded corners */
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    --padding: 10px; /* Reduced padding for messages */
+    --padding-error: 15px 20px; /* Adjusted padding for error messages */
+    --margin-bottom: 1px; /* Spacing between messages */
+    --container-padding: 5px; /* Reduced padding for message container */
+}
+
+/* Success message */
+.success {
+    color: var(--success-text-color);
+    background-color: var(--success-bg-color);
+    border: 1px solid var(--success-border-color);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: var(--margin-bottom);
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Fit background to text width */
+}
+
+/* Error message */
+.error {
+    color: var(--error-text-color);
+    background-color: var(--error-bg-color);
+    border: 1px solid var(--error-border-color);
+    padding: var(--padding-error); /* Use the adjusted padding */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: var(--margin-bottom);
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Fit background to text width */
+}
+
+
+/* Message container */
+.message-container {
+    max-width: 600px; /* Maximum width of the message container */
+    width: 90%; /* Set width to 90% of its parent */
+    margin: 20px auto; /* Center align and spacing from top */
+    padding: var(--container-padding); /* Adjusted padding for message container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Add hover effect for interaction */
+.success:hover, .error:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Info message */
+.message-info {
+    color: var(--info-text-color);
+    background-color: var(--info-bg-color);
+    border: 1px solid var(--info-border-color);
+    padding: var(--padding); /* Use the defined padding */
+    border-radius: var(--border-radius); /* Use the defined border radius */
+    box-shadow: var(--box-shadow); /* Use the defined box shadow */
+    margin-bottom: var(--margin-bottom); /* Use the defined margin bottom */
+    font-size: var(--font-size); /* Use the defined font size */
+    font-family: var(--font-family); /* Use the defined font family */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Use the defined transition */
+}
+
+/* Add hover effect for interaction */
+.message-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1); /* Hover shadow */
+}
+
+/* Add animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.main-content, .message-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.col-4 {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+
+
+/*login*/
+
+/* Login container */
+.login {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Login header */
+.login h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+.login form {
+    text-align: center;
+}
+
+/* Form inputs */
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Submit button */
+.login input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #fa0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+.login input[type="submit"]:hover {
+    background-color: #dd0000;
+}
+
+/* Footer */
+.login p {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Footer link */
+.login a {
+    color: #fa0000;
+    text-decoration: none;
+}
+
+/* Footer link hover effect */
+.login a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* CSS for footer */
+.footer {
+    background-color: rgb(226, 55, 55); /* Footer background color */
+    color: white; /* Text color */
+    padding: 20px; /* Padding for footer */
+    text-align: center; /* Center align text */
+}
